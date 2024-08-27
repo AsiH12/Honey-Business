@@ -8,25 +8,25 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
-import './css/ProductList.css'; // Ensure the correct path to CSS file
+import { useCart } from '../CartContext';
+import './css/ProductList.css';
 
-// Custom styles for the honey-themed dialog
 const StyledDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiPaper-root': {
-    backgroundColor: '#fff7e6', // Light honey background color
-    borderRadius: '16px', // Rounded corners to mimic a honeycomb shape
-    border: '2px solid #f5b61f', // Honey yellow border
+    backgroundColor: '#fff7e6',
+    borderRadius: '16px',
+    border: '2px solid #f5b61f',
   },
 }));
 
 const StyledDialogTitle = styled(DialogTitle)({
-  color: '#f5b61f', // Honey yellow color
+  color: '#f5b61f',
   textAlign: 'center',
   fontWeight: 'bold',
 });
 
 const StyledDialogContent = styled(DialogContent)({
-  color: '#4d3300', // Dark brown text to resemble honeycomb
+  color: '#4d3300',
   textAlign: 'center',
   padding: '20px',
 });
@@ -37,21 +37,22 @@ const StyledDialogActions = styled(DialogActions)({
 });
 
 const StyledButton = styled(Button)({
-  backgroundColor: '#f5b61f', // Honey yellow button color
+  backgroundColor: '#f5b61f',
   color: '#fff',
   '&:hover': {
-    backgroundColor: '#e4a01f', // Darker honey color on hover
+    backgroundColor: '#e4a01f',
   },
   margin: '0 10px',
   padding: '10px 20px',
-  borderRadius: '8px', // Rounded button for a soft look
+  borderRadius: '8px',
 });
 
 function ProductList() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [popup, setPopup] = useState(null); // To manage popup state
+  const [popup, setPopup] = useState(null);
+  const { addToCart } = useCart();
 
   useEffect(() => {
     axios.get('http://localhost:8000/api/products/')
@@ -78,9 +79,10 @@ function ProductList() {
       if (option === 'לתשלום') {
         console.log(`Proceeding to checkout for ${popup.name}`);
       } else if (option === 'הוספה לעגלה') {
+        addToCart(popup);
         console.log(`Added ${popup.name} to the cart`);
       }
-      handlePopupClose(); // Close the popup after selection
+      handlePopupClose();
     }
   };
 
