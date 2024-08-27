@@ -1,6 +1,7 @@
+// src/components/ProductList.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './ProductList.css'; // Ensure the correct path to CSS file
+import './css/ProductList.css'; // Ensure the correct path to CSS file
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -26,7 +27,11 @@ function ProductList() {
 
   const handleOptionSelect = (option) => {
     if (popup) {
-      console.log(`${option} selected for ${popup.name}`);
+      if (option === 'לתשלום') {
+        console.log(`Proceeding to checkout for ${popup.name}`);
+      } else if (option === 'הוספה לעגלה') {
+        console.log(`Added ${popup.name} to the cart`);
+      }
       setPopup(null); // Close the popup after selection
     }
   };
@@ -41,9 +46,10 @@ function ProductList() {
           <div key={product.id} className="product-item">
             <h2>{product.name}</h2>
             <img src={`http://localhost:8000${product.image_url}`} alt={product.name} />
-            <p>{product.description}</p>
-            <p>מחיר: ₪{product.price}</p> {/* Display price in shekels */}
-            <button className="buy-now-button" onClick={() => handlePopupOpen(product)}>קנה עכשיו</button>
+            <p>מחיר: ₪{product.price}</p>
+            <button className="buy-now-button" onClick={() => handlePopupOpen(product)}>
+              קנה עכשיו
+            </button>
             {popup && popup.id === product.id && (
               <div className="popup-menu">
                 <button onClick={() => handleOptionSelect('לתשלום')}>לתשלום</button>

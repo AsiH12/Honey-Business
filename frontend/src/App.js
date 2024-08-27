@@ -1,9 +1,9 @@
 import React from "react";
 import { Link, Element } from 'react-scroll';
 import "./App.css";
-import ProductList from "./ProductList";
+import ProductList from "./components/ProductList";
 import Slideshow from "./Slideshow"; // Import the Slideshow component
-import ContactUs from "./ContactUs"; // Import the Contact Us component
+import ContactUs from "./components/ContactUs"; // Import the Contact Us component
 import aboutImage from "./images/about-us.jpg"; // Import the image
 
 function App() {

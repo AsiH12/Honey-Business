@@ -1,8 +1,8 @@
-import React from 'react';
-import './ContactUs.css'; // Import CSS file for styling
+import React from "react";
+import "./css/ContactUs.css"; // Ensure this path is correct
 
 const contactFormStyle = {
-  fontFamily: 'Roboto, sans-serif', // Applying the new font
+  fontFamily: "Roboto, sans-serif", // Applying the new font
 };
 
 function ContactUs() {
@@ -12,30 +12,30 @@ function ContactUs() {
       <form className="contact-form">
         <div className="form-group">
           <label htmlFor="name">שם:</label>
-          <input 
-            type="text" 
-            id="name" 
-            name="name" 
+          <input
+            type="text"
+            id="name"
+            name="name"
             placeholder="שם מלא"
-            required 
+            required
           />
         </div>
         <div className="form-group">
           <label htmlFor="email">דוא"ל:</label>
-          <input 
-            type="email" 
-            id="email" 
-            name="email" 
+          <input
+            type="email"
+            id="email"
+            name="email"
             placeholder="אימייל"
-            required 
+            required
           />
         </div>
         <div className="form-group">
           <label htmlFor="message">הודעה:</label>
-          <textarea 
-            id="message" 
-            name="message" 
-            rows="4" 
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
             placeholder="הודעה"
             required
           ></textarea>
