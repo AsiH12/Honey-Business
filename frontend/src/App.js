@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
 import { Element, scroller } from 'react-scroll';
-import "./App.css";
+import './App.css';
 import ProductList from './components/ProductList';
 import Slideshow from './Slideshow';
 import ContactUs from './components/ContactUs';
@@ -26,7 +26,9 @@ function App() {
 
 function Header() {
   const navigate = useNavigate();
+  const [cartCount, setCartCount] = React.useState(0); // Cart count state
 
+  // Function to handle scrolling to section
   const handleScrollToSection = (sectionName) => {
     scroller.scrollTo(sectionName, {
       smooth: true,
@@ -35,6 +37,7 @@ function Header() {
     });
   };
 
+  // Function to handle navigation with scroll
   const handleNavigation = (path, sectionName) => {
     navigate(path, { replace: true });
 
@@ -42,6 +45,11 @@ function Header() {
     setTimeout(() => {
       handleScrollToSection(sectionName);
     }, 200);
+  };
+
+  // Mock function to simulate adding items to the cart
+  const addToCart = () => {
+    setCartCount(prevCount => prevCount + 1);
   };
 
   return (
@@ -52,7 +60,12 @@ function Header() {
           <Link to="/" onClick={() => handleNavigation('/', 'products')}>מוצרים🍯</Link>
           <Link to="/" onClick={() => handleNavigation('/', 'about')}>קצת עלינו🌸</Link>
           <Link to="/" onClick={() => handleNavigation('/', 'contact')}>צרו קשר🧇</Link>
-          <Link to="/cart" onClick={() => handleNavigation('/cart', 'cart')}>עגלה🛒</Link>
+          <Link to="/cart" onClick={() => handleNavigation('/cart', 'cart')} className="cart-link">
+            עגלה🛒
+            {cartCount > 0 && (
+              <span className="cart-count">{cartCount}</span> // Display cart count
+            )}
+          </Link>
         </div>
         <h1 className="header-title">דבש האילן</h1>
       </div>
