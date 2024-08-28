@@ -1,4 +1,3 @@
-// src/components/ProductList.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Dialog from '@mui/material/Dialog';
@@ -11,6 +10,7 @@ import { styled } from '@mui/material/styles';
 import { useCart } from '../CartContext';
 import './css/ProductList.css';
 
+// Styled Components
 const StyledDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiPaper-root': {
     backgroundColor: '#fff7e6',
@@ -52,10 +52,12 @@ function ProductList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [popup, setPopup] = useState(null);
+  const [cartDialogOpen, setCartDialogOpen] = useState(false);
+  const [dialogProduct, setDialogProduct] = useState(null);
   const { addToCart } = useCart();
 
   useEffect(() => {
-    let isMounted = true; // To track if component is mounted
+    let isMounted = true;
 
     axios.get('http://localhost:8000/api/products/')
       .then(response => {
@@ -72,7 +74,7 @@ function ProductList() {
       });
 
     return () => {
-      isMounted = false; // Cleanup on unmount
+      isMounted = false;
     };
   }, []);
 
@@ -90,10 +92,17 @@ function ProductList() {
         console.log(`Proceeding to checkout for ${popup.name}`);
       } else if (option === 'הוספה לעגלה') {
         addToCart(popup);
+        setDialogProduct(popup);
+        setCartDialogOpen(true);
         console.log(`Added ${popup.name} to the cart`);
       }
       handlePopupClose();
     }
+  };
+
+  const handleCartDialogClose = () => {
+    setCartDialogOpen(false);
+    setDialogProduct(null);
   };
 
   if (loading) return <p>Loading...</p>;
@@ -138,6 +147,27 @@ function ProductList() {
       ) : (
         <p>No products available</p>
       )}
+      {/* Cart Dialog */}
+      <StyledDialog
+        open={cartDialogOpen}
+        onClose={handleCartDialogClose}
+        aria-labelledby="cart-dialog-title"
+        aria-describedby="cart-dialog-description"
+      >
+        <StyledDialogTitle id="cart-dialog-title">
+          מוצר נוסף לעגלה
+        </StyledDialogTitle>
+        <StyledDialogContent>
+          <DialogContentText id="cart-dialog-description">
+            המוצר {dialogProduct?.name} נוספה בהצלחה לעגלה!
+          </DialogContentText>
+        </StyledDialogContent>
+        <StyledDialogActions>
+          <StyledButton onClick={handleCartDialogClose}>
+            סגור
+          </StyledButton>
+        </StyledDialogActions>
+      </StyledDialog>
     </div>
   );
 }
