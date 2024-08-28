@@ -55,15 +55,25 @@ function ProductList() {
   const { addToCart } = useCart();
 
   useEffect(() => {
+    let isMounted = true; // To track if component is mounted
+
     axios.get('http://localhost:8000/api/products/')
       .then(response => {
-        setProducts(response.data);
-        setLoading(false);
+        if (isMounted) {
+          setProducts(response.data);
+          setLoading(false);
+        }
       })
       .catch(error => {
-        setError('There was an error fetching the products.');
-        setLoading(false);
+        if (isMounted) {
+          setError('There was an error fetching the products.');
+          setLoading(false);
+        }
       });
+
+    return () => {
+      isMounted = false; // Cleanup on unmount
+    };
   }, []);
 
   const handlePopupOpen = (product) => {

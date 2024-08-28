@@ -6,7 +6,7 @@ import ProductList from './components/ProductList';
 import Slideshow from './Slideshow';
 import ContactUs from './components/ContactUs';
 import aboutImage from './images/about-us.jpg';
-import CartPage from './pages/CartPage';
+import CartPage from './pages/CartPage'; // Ensure this path is correct
 import { CartProvider, useCart } from './CartContext';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
           <main>
             <Routes>
               <Route path="/" element={<MainPage />} />
-              <Route path="/cart" element={<CartPage />} />
+              <Route path="/cart" element={<CartPage />} /> {/* Ensure CartPage is used here */}
             </Routes>
           </main>
         </div>
@@ -80,15 +80,19 @@ function MainPage() {
           <h2>קצת עלינו</h2>
           <img src={aboutImage} alt="About Us" className="about-image" />
           <p>
-            {/* About Us content */}
+            עלינו: אצלנו במושב אליקים, תהנו מדבש איכותי וטהור, שלא עבר חימום או
+            עיבוד, הישר מפרחי הבר של המרחב הביוספרי של רמות מנשה. הדבש שלנו נאסף
+            בקפידה מהפרחים הפראיים שמסביבנו, מה שמבטיח את הטעמים העשירים
+            והטבעיים ביותר. המתיקות והאיכות של הדבש שלנו מגיעות מהשדה ישירות
+            אליכם, עם דגש על שמירה על תהליך פשוט וטבעי. כל בקבוק דבש מהחווה שלנו
+            משקף את האופי הייחודי של אזור רמות מנשה ואת האהבה שלנו לייצור דבש
+            איכותי. אנו משפחה קטנה ומסורה שמחויבת להביא לכם דבש איכותי ובלתי
+            מעורבב, ולתמוך בקיימות ותחזוקה טבעית של הכוורות שלנו.
           </p>
         </div>
       </Element>
       <Element name="contact">
         <ContactUs />
-      </Element>
-      <Element name="cart">
-        <CartPage />
       </Element>
     </>
   );
