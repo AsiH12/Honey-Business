@@ -1,9 +1,15 @@
-import React from 'react';
-import { useCart } from '../CartContext';
-import './CartPage.css'; // Ensure this file contains styles for the cart page
+import React from "react";
+import { useCart } from "../CartContext";
+import Button from "@mui/material/Button"; // Import MUI Button
+import "./CartPage.css"; // Ensure this file contains styles for the cart page
 
 const CartPage = () => {
   const { cartItems, removeFromCart, getTotalPrice } = useCart();
+
+  const handleCheckout = () => {
+    // Logic to handle checkout, like navigating to the checkout page
+    console.log("Proceeding to checkout...");
+  };
 
   return (
     <div className="cart-page">
@@ -14,10 +20,10 @@ const CartPage = () => {
         <div className="cart-items">
           {cartItems.map((item) => (
             <div key={item.id} className="cart-item">
-              <img 
-                src={`http://localhost:8000${item.image_url}`} 
-                alt={item.name} 
-                className="cart-item-image" 
+              <img
+                src={`http://localhost:8000${item.image_url}`}
+                alt={item.name}
+                className="cart-item-image"
               />
               <div className="cart-item-details">
                 <h2>{item.name}</h2>
@@ -30,6 +36,15 @@ const CartPage = () => {
           <div className="cart-total">
             <h2>סך הכל: ₪{getTotalPrice()}</h2>
           </div>
+          <Button
+            className="checkout-button"
+            variant="contained"
+            color="primary"
+            onClick={handleCheckout}
+            style={{ backgroundColor: "#f5b61f", color: "#fff", width: "100%" }}
+          >
+            לתשלום
+          </Button>
         </div>
       )}
     </div>

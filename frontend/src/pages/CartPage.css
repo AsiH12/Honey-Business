@@ -1,4 +1,5 @@
 /* CartPage.css */
+
 .cart-page {
   background-color: #fff9e6; /* Light honey color */
   color: #4d3300; /* Dark brown text color for contrast */
@@ -20,7 +21,7 @@
   display: flex;
   flex-direction: column;
   gap: 30px; /* Increased gap between items */
-  padding-top: 20px; /* Additional padding to push items down */
+  padding-top: 25px; /* Increased padding to push items down */
 }
 
 .cart-item {
@@ -60,20 +61,28 @@
   margin: 5px 0;
 }
 
-button {
-  background-color: #f5b61f; /* Honey yellow color */
+/* Honeycomb-inspired button styles */
+.total-button,
+.checkout-button {
+  background: linear-gradient(
+    135deg,
+    #f5b61f,
+    #e4a01f
+  ); /* Gradient honey yellow */
   color: #fff;
-  border: none;
-  border-radius: 12px; /* Rounded corners */
-  padding: 12px 20px;
-  cursor: pointer;
-  font-size: 1.1em;
-  transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
-}
-
-button:hover {
-  background-color: #e4a01f; /* Darker honey yellow for hover effect */
-  transform: scale(1.05); /* Slightly enlarge button on hover */
+  border: 2px solid #e4a01f; /* Darker honey yellow border */
+  border-radius: 50%; /* Circular shape */
+  padding: 10px;
+  width: 60px; /* Diameter of the button */
+  height: 60px; /* Diameter of the button */
+  font-size: 0.8em; /* Adjust font size */
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for a floating effect */
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+  margin: 20px auto; /* Center align button with margin */
 }
 
 .cart-total {
