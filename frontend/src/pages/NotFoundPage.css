@@ -1,0 +1,47 @@
+/* NotFoundPage.css */
+.not-found-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #f5f5dc, #f9f0d5); /* Honey gradient */
+    color: #4a3a2a; /* Dark honey color */
+    text-align: center;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-image: url('../images/404.png'); /* Honey-themed background image */
+    background-size: cover;
+    background-position: center;
+}
+
+.not-found-page h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #c49a6c; /* Honey color */
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 4px solid #f9c74f; /* Lighter honey color border */
+    background: rgba(255, 255, 255, 0.9); /* Slightly opaque background */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for text */
+}
+
+.not-found-page p {
+    font-size: 1.25rem;
+    color: #6e4f28; /* Darker honey color */
+    padding: 10px;
+    border: 2px solid #f9c74f; /* Lighter honey color border */
+    background: rgba(255, 255, 255, 0.9); /* Slightly opaque background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for text */
+}
+
+.not-found-page img {
+    width: 60px; /* Smaller image size */
+    height: auto;
+    margin-top: 20px;
+    border-radius: 50%; /* Circular image */
+    border: 4px solid #c49a6c; /* Honey color border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for image */
+}

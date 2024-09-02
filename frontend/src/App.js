@@ -1,18 +1,13 @@
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Link,
-  useNavigate,
-} from "react-router-dom";
-import { Element, scroller } from "react-scroll";
-import "./App.css";
-import ProductList from "./components/ProductList";
-import ContactUs from "./components/ContactUs";
-import aboutImage from "./images/about-us.jpg";
-import CartPage from "./pages/CartPage"; // Ensure this path is correct
-import { CartProvider, useCart } from "./CartContext";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
+import { Element, scroller } from 'react-scroll';
+import './App.css';
+import ProductList from './components/ProductList';
+import ContactUs from './components/ContactUs';
+import aboutImage from './images/about-us.jpg';
+import CartPage from './pages/CartPage';
+import NotFoundPage from './pages/NotFoundPage'; // Import NotFoundPage
+import { CartProvider, useCart } from './CartContext';
 
 function App() {
   return (
@@ -23,8 +18,8 @@ function App() {
           <main>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/cart" element={<CartPage />} />{" "}
-              {/* Ensure CartPage is used here */}
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="*" element={<NotFoundPage />} /> {/* Fallback route */}
             </Routes>
           </main>
         </div>
@@ -89,7 +84,7 @@ function Home() {
           <p>
             תהנו מהמבחר האיכותי ביותר של מוצרי דבש טבעיים וטהורים הישר מהטבע.
           </p>
-          <ProductList /> {/* Your product list displayed on the homepage */}
+          <ProductList />
         </div>
       </Element>
       <Element name="about">
