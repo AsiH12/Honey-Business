@@ -1,13 +1,18 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
-import { Element, scroller } from 'react-scroll';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link,
+  useNavigate,
+} from "react-router-dom";
+import { Element, scroller } from "react-scroll";
 import "./App.css";
-import ProductList from './components/ProductList';
-import Slideshow from './Slideshow';
-import ContactUs from './components/ContactUs';
-import aboutImage from './images/about-us.jpg';
-import CartPage from './pages/CartPage'; // Ensure this path is correct
-import { CartProvider, useCart } from './CartContext';
+import ProductList from "./components/ProductList";
+import ContactUs from "./components/ContactUs";
+import aboutImage from "./images/about-us.jpg";
+import CartPage from "./pages/CartPage"; // Ensure this path is correct
+import { CartProvider, useCart } from "./CartContext";
 
 function App() {
   return (
@@ -17,8 +22,9 @@ function App() {
           <Header />
           <main>
             <Routes>
-              <Route path="/" element={<MainPage />} />
-              <Route path="/cart" element={<CartPage />} /> {/* Ensure CartPage is used here */}
+              <Route path="/" element={<Home />} />
+              <Route path="/cart" element={<CartPage />} />{" "}
+              {/* Ensure CartPage is used here */}
             </Routes>
           </main>
         </div>
@@ -51,10 +57,18 @@ function Header() {
     <header className="App-header">
       <div className="header-content">
         <div className="navbar">
-          <Link to="/" onClick={() => handleNavigation('/', 'home')}>בית🐝</Link>
-          <Link to="/" onClick={() => handleNavigation('/', 'products')}>מוצרים🍯</Link>
-          <Link to="/" onClick={() => handleNavigation('/', 'about')}>קצת עלינו🌸</Link>
-          <Link to="/" onClick={() => handleNavigation('/', 'contact')}>צרו קשר🧇</Link>
+          <Link to="/" onClick={() => handleNavigation("/", "home")}>
+            בית🐝
+          </Link>
+          <Link to="/" onClick={() => handleNavigation("/", "products")}>
+            מוצרים🍯
+          </Link>
+          <Link to="/" onClick={() => handleNavigation("/", "about")}>
+            קצת עלינו🌸
+          </Link>
+          <Link to="/" onClick={() => handleNavigation("/", "contact")}>
+            צרו קשר🧇
+          </Link>
           <Link to="/cart" className="cart-link">
             עגלה🛒
             <span className="cart-count">{getCartCount()}</span>
@@ -66,14 +80,17 @@ function Header() {
   );
 }
 
-function MainPage() {
+function Home() {
   return (
     <>
       <Element name="home">
-        <div> {/* Home section if needed */} </div>
-      </Element>
-      <Element name="products">
-        <ProductList />
+        <div className="home-section">
+          <h1>ברוכים הבאים לדבש האילן</h1>
+          <p>
+            תהנו מהמבחר האיכותי ביותר של מוצרי דבש טבעיים וטהורים הישר מהטבע.
+          </p>
+          <ProductList /> {/* Your product list displayed on the homepage */}
+        </div>
       </Element>
       <Element name="about">
         <div className="AboutUs">

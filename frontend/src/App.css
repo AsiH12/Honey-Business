@@ -71,8 +71,9 @@ code {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  padding-top: 190px; /* Adjust this value to move the component lower */
+  padding-top: 120px; /* Adjusted value to move the component upwards */
 }
+
 
 .product-item {
   background-color: #fff; /* White background for products */
