@@ -1,28 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCart } from "../CartContext";
 import Button from "@mui/material/Button";
-import axios from "axios"; // Import Axios
-import "./CartPage.css"; // Ensure this file contains styles for the cart page
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import "./CartPage.css";
 
 const CartPage = () => {
-  const { cartItems, removeFromCart, getTotalPrice } = useCart();
+  const { cartItems, removeFromCart, getTotalPrice, clearCart } = useCart();
+  const [confirmationDialogOpen, setConfirmationDialogOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleCheckout = async () => {
+    setLoading(true);
     try {
-      const response = await axios.post("http://localhost:8000/api/orders/create/", {
-        items: cartItems, // Ensure cartItems is in the correct format
-        total_price: getTotalPrice(),
-      });
+      const response = await axios.post(
+        "http://localhost:8000/api/orders/create/",
+        {
+          items: cartItems.map((item) => ({
+            product: item.id,
+            quantity: item.quantity,
+          })),
+          total_price: getTotalPrice(),
+          created_at: new Date().toISOString(), // Add created_at field
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response.status === 201) {
-        console.log("Order placed successfully");
-        // Optionally clear cart or redirect
+        setConfirmationDialogOpen(true);
+        clearCart(); // Clear the cart
+        setLoading(false);
+        setTimeout(() => {
+          navigate("/"); // Redirect to homepage after 2 seconds
+        }, 2000);
       } else {
         console.error("Failed to place order");
+        setLoading(false);
       }
     } catch (error) {
       console.error("An error occurred while placing the order", error);
+      setLoading(false);
     }
+  };
+
+  const handleCloseConfirmationDialog = () => {
+    setConfirmationDialogOpen(false);
   };
 
   return (
@@ -61,6 +93,22 @@ const CartPage = () => {
           </Button>
         </div>
       )}
+      {/* Confirmation Dialog */}
+      <Dialog
+        open={confirmationDialogOpen}
+        onClose={handleCloseConfirmationDialog}
+        aria-labelledby="confirmation-dialog-title"
+        aria-describedby="confirmation-dialog-description"
+        className="confirmation-dialog"
+      >
+        <DialogTitle id="confirmation-dialog-title">ההזמנה אושרה!</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="confirmation-dialog-description">
+            הדבש הטרי שלנו בדרך אלייך!{" "}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions></DialogActions>
+      </Dialog>
     </div>
   );
 };

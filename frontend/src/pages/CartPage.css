@@ -1,4 +1,4 @@
-/* CartPage.css */
+/* src/pages/CartPage.css */
 
 .cart-page {
   background-color: #fff9e6; /* Light honey color */
@@ -29,14 +29,14 @@
   align-items: center;
   background-color: #fff; /* White background for items */
   border: 2px solid #f5b61f; /* Honey yellow border */
-  border-radius: 12px; /* More rounded corners */
-  padding: 15px;
+  border-radius: 16px; /* More rounded corners */
+  padding: 20px; /* Increased padding for better spacing */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow for modern look */
   transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
 }
 
 .cart-item:hover {
-  transform: translateY(-5px); /* Slight lift effect on hover */
+  transform: scale(1.05); /* Slight zoom effect on hover */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }
 
@@ -71,11 +71,9 @@
   ); /* Gradient honey yellow */
   color: #fff;
   border: 2px solid #e4a01f; /* Darker honey yellow border */
-  border-radius: 50%; /* Circular shape */
-  padding: 10px;
-  width: 60px; /* Diameter of the button */
-  height: 60px; /* Diameter of the button */
-  font-size: 0.8em; /* Adjust font size */
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px 20px;
+  font-size: 1em; /* Adjust font size */
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -90,4 +88,58 @@
   text-align: center;
   font-size: 1.8em; /* Larger font size for emphasis */
   font-weight: bold;
+}
+
+/* Confirmation dialog styles */
+.MuiDialog-paper {
+  background-color: #fff; /* White background for dialog */
+  border: 2px solid #f5b61f; /* Honey yellow border */
+  border-radius: 16px; /* Rounded corners */
+  padding: 20px; /* Padding inside the dialog */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  max-width: 400px; /* Maximum width */
+  margin: 0 auto; /* Center align */
+}
+
+.MuiDialogTitle-root {
+  color: #f5b61f; /* Honey yellow text color */
+  font-size: 1.5em; /* Slightly smaller font size */
+  text-align: center; /* Center align text */
+  margin-bottom: 15px; /* Margin below the title */
+  font-weight: bold; /* Bold font weight */
+}
+
+.MuiDialogContentText-root {
+  color: #4d3300; /* Dark brown text color */
+  font-size: 1.1em; /* Slightly larger font size */
+  text-align: center; /* Center align text */
+  margin-bottom: 15px; /* Margin below the text */
+}
+
+.confirmation-button {
+  background: linear-gradient(
+    135deg,
+    #f5b61f,
+    #e4a01f
+  ); /* Gradient honey yellow background */
+  color: #fff; /* White text color */
+  border: 2px solid #e4a01f; /* Darker honey yellow border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px 20px; /* Padding inside the button */
+  font-size: 1em; /* Font size for the button */
+  font-weight: bold; /* Bold font weight */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transition */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.confirmation-button:hover {
+  background: linear-gradient(
+    135deg,
+    #e4a01f,
+    #f5b61f
+  ); /* Darker gradient on hover */
 }
