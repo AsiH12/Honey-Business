@@ -107,7 +107,15 @@ const CartPage = () => {
             הדבש הטרי שלנו בדרך אלייך!{" "}
           </DialogContentText>
         </DialogContent>
-        <DialogActions></DialogActions>
+        <DialogActions>
+          <Button
+            onClick={handleCloseConfirmationDialog}
+            color="primary"
+            className="confirmation-button"
+          >
+            Close
+          </Button>
+        </DialogActions>
       </Dialog>
     </div>
   );
