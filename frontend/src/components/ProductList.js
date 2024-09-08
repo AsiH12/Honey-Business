@@ -59,7 +59,7 @@ function ProductList() {
   useEffect(() => {
     let isMounted = true;
 
-    axios.get('http://localhost:8000/api/products/')
+    axios.get('http://localhost:8000/api/products/products/')
       .then(response => {
         if (isMounted) {
           setProducts(response.data);

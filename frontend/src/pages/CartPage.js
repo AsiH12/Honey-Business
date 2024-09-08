@@ -1,14 +1,28 @@
 import React from "react";
 import { useCart } from "../CartContext";
-import Button from "@mui/material/Button"; // Import MUI Button
+import Button from "@mui/material/Button";
+import axios from "axios"; // Import Axios
 import "./CartPage.css"; // Ensure this file contains styles for the cart page
 
 const CartPage = () => {
   const { cartItems, removeFromCart, getTotalPrice } = useCart();
 
-  const handleCheckout = () => {
-    // Logic to handle checkout, like navigating to the checkout page
-    console.log("Proceeding to checkout...");
+  const handleCheckout = async () => {
+    try {
+      const response = await axios.post("http://localhost:8000/api/orders/create/", {
+        items: cartItems, // Ensure cartItems is in the correct format
+        total_price: getTotalPrice(),
+      });
+
+      if (response.status === 201) {
+        console.log("Order placed successfully");
+        // Optionally clear cart or redirect
+      } else {
+        console.error("Failed to place order");
+      }
+    } catch (error) {
+      console.error("An error occurred while placing the order", error);
+    }
   };
 
   return (

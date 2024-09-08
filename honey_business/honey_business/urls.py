@@ -5,10 +5,9 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # URL pattern for the API endpoints
-    path('api/', include('products.urls')),
+    path('api/products/', include('products.urls')),
+    path('api/orders/', include('orders.urls')),  # Include your orders URLs
 ]
 
 if settings.DEBUG:
-    # Serve media files during development
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'products',
     'rest_framework',
     'corsheaders',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -106,3 +107,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Adjust to your React app's URL if different
 ]
+
+# Production settings (optional)
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# X_FRAME_OPTIONS = 'DENY'
