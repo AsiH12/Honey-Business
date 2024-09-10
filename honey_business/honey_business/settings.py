@@ -23,9 +23,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'products',
+    'orders',
+    'users',  # Ensure the 'users' app is included
     'rest_framework',
     'corsheaders',
-    'orders',
 ]
 
 MIDDLEWARE = [
@@ -44,7 +45,7 @@ ROOT_URLCONF = 'honey_business.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],  # Add this line to include the project's template directory
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -113,3 +114,9 @@ CORS_ALLOWED_ORIGINS = [
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True
 # X_FRAME_OPTIONS = 'DENY'
+
+
+# settings.py
+
+STRIPE_TEST_PUBLIC_KEY = 'your-public-key'
+STRIPE_TEST_SECRET_KEY = 'your-secret-key'

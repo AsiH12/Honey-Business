@@ -1,0 +1,7 @@
+<!-- users/templates/users/view_addresses.html -->
+<h2>Your Addresses</h2>
+<ul>
+    {% for address in addresses %}
+        <li>{{ address.street }}, {{ address.city }}, {{ address.state }}, {{ address.postal_code }}, {{ address.country }}</li>
+    {% endfor %}
+</ul>
