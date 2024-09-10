@@ -159,7 +159,7 @@ function ProductList() {
         </StyledDialogTitle>
         <StyledDialogContent>
           <DialogContentText id="cart-dialog-description">
-            המוצר {dialogProduct?.name} נוספה בהצלחה לעגלה!
+            המוצר {dialogProduct?.name} נוסף בהצלחה לעגלה!
           </DialogContentText>
         </StyledDialogContent>
         <StyledDialogActions>

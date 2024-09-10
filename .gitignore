@@ -1,16 +1,16 @@
 # SQLite database files
 *.sqlite3
 
-# Node modules and other files (from src/.gitignore)
-/node_modules
-/.pnp
+# Node modules and other files
+node_modules/
+.pnp
 .pnp.js
 
 # Testing artifacts
-/coverage
+coverage/
 
 # Production builds
-/build
+build/
 
 # Miscellaneous
 .DS_Store
