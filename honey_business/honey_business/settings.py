@@ -24,7 +24,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'products',
     'orders',
-    'users',  # Ensure the 'users' app is included
     'rest_framework',
     'corsheaders',
 ]
